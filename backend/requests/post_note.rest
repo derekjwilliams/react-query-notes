@@ -1,8 +1,0 @@
-POST http://localhost:3001/api/notes
-content-type: application/json
-
-{
-  "content": "It's Good Enough",
-  "important": true,
-  "userId": "655f862a4ef4e4e9d678e288"
-}
