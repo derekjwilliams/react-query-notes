@@ -15,3 +15,9 @@ The server runs on port 3001, so to see notes, use http://localhost:3001/notes
 ```npm run dev```
 
 The client runs on port 5173, navigate to http://localhost:5173 to see the super simple client
+
+## Some Sweet Notes on Tanstack Query
+
+Tanstach Query's QueryKeys is a hash of strings to identify objects in the system in our example 'notes' is a key in that hash.  All verbs (GET, POST, PUT) need to use the 'notes' key.  This is used in the hook `useQuery`
+
+See https://tanstack.com/query/v4/docs/react/guides/query-keys
