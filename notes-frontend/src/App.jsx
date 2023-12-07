@@ -8,11 +8,15 @@ const App = () => {
 
   /**
    * Mutation to create a new note, e.g. makes a POST request (see request -> createNote)
+   * 
+   * The call to query the data
    */
   const newNoteMutation = useMutation({
     mutationFn: createNote,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['notes'] })
+    onSuccess: (newNote) => {
+      const notes = queryClient.getQueryData(['notes'])
+      queryClient.setQueryData(['notes'], notes.concat(newNote))
+      //queryClient.invalidateQueries({ queryKey: ['notes'] }) // always refetches all notes
     }
   })
 
@@ -55,7 +59,8 @@ const App = () => {
    */
   const result = useQuery({
     queryKey: ['notes'],
-    queryFn: getNotes
+    queryFn: getNotes,
+    refetchOnWindowFocus: false // if false: disable fetching notes  on change of focus, see Tanstack docs,
   })
 
   if (result.isLoading) {
