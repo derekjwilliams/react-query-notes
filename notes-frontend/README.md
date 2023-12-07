@@ -1,8 +1,17 @@
-# React + Vite
+# Running
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a super simple application. Both the mock server and client need to be run
 
-Currently, two official plugins are available:
+## Mock Server
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The json-server package is used to mock a server:
+
+```npm run server```
+
+The server runs on port 3001, so to see notes, use http://localhost:3001/notes
+
+## Client
+
+```npm run dev```
+
+The client runs on port 5173, navigate to http://localhost:5173 to see the super simple client
