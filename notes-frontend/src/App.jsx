@@ -7,28 +7,8 @@ const App = () => {
   const queryClient = useQueryClient()
 
   /**
-   * Note: The fullstackopen docs uses both 
-   *    queryClient.invalidateQueries({ queryKey: ['notes'] }) 
-   *  and 
-   *    queryClient.invalidateQueries('notes)
-   * 
-   * See: https://fullstackopen.com/en/part6/react_query_use_reducer_and_the_context#synchronizing-data-to-the-server-using-react-query
-   * 
-   * The Tanstack documetation always uses the full object, e.g. { queryKey: ['notes'] }
-   * See: https://tanstack.com/query/v4/docs/react/guides/query-invalidation
-   * 
-   * Two calls are made when a mutation is run, the POST to create a note and a GET to retrive all of the notes
-   * Open the Browswer inspector to see this happen
-   * 
-   * From the FullStackOpen tutorial: 
-   * 
-   * "This in turn causes React Query to automatically 
-   * update a query with the key notes, i.e. fetch the notes 
-   * from the server. As a result, the application renders 
-   * the up-to-date state on the server, i.e. the added note 
-   * is also rendered."
+   * Mutation to create a new note, e.g. makes a POST request (see request -> createNote)
    */
-
   const newNoteMutation = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
@@ -36,6 +16,9 @@ const App = () => {
     }
   })
 
+  /**
+   * Mutation to update the note, e.g. makes a PUT request (see request -> updateNote)
+   */
   const updateNoteMutation = useMutation({
     mutationFn: updateNote,
     onSuccess: () => {
@@ -43,6 +26,14 @@ const App = () => {
     },
   })
 
+  /**
+   * Add a new note
+   * @param {*} event The event is from clicking 'add' in the form, which
+   * in turn calls this function.  The string on the note input is used for
+   * the 'content' property of the note, i.e. the input html element with 
+   * the name attribute of 'note', which is accessed: as 'event.target.note.value'
+   * that input is immeditely cleared then the newNoteMutation is called
+   */
   const addNote = async (event) => {
     event.preventDefault()
     const content = event.target.note.value
@@ -50,8 +41,12 @@ const App = () => {
     newNoteMutation.mutate({ content, important: true })
   }
 
+  /**
+   * Change the important property of the note
+   * @param {*} note 
+   */
   const toggleImportance = (note) => {
-    updateNoteMutation.mutate({...note, important: !note.important })
+    updateNoteMutation.mutate({ ...note, important: !note.important })
     console.log('toggle importance of', note.id)
   }
 
@@ -62,8 +57,6 @@ const App = () => {
     queryKey: ['notes'],
     queryFn: getNotes
   })
-
-//  console.log(JSON.parse(JSON.stringify(result)))
 
   if (result.isLoading) {
     return <div>loading data...</div>
@@ -89,3 +82,5 @@ const App = () => {
 }
 
 export default App
+
+
