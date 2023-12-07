@@ -20,7 +20,7 @@ The client runs on port 5173, navigate to http://localhost:5173 to see the super
 
 Tanstack Query's QueryKeys is a hash of strings to identify objects in the system in our example 'notes' is a key in that hash.  All verbs (GET, POST, PUT) need to use the 'notes' key.  This is used in the hook `useQuery`
 
-See https://tanstack.com/query/v4/docs/react/guides/query-keys
+See https://tanstack.com/query/v5/docs/react/guides/query-keys
 
 ## FullStackOpen github repo for these excercises, branches for each step
 
@@ -62,7 +62,7 @@ See: https://fullstackopen.com/en/part6/react_query_use_reducer_and_the_context#
 
 The Tanstack documetation always uses the full object, e.g. `{ queryKey: ['notes'] }`
 
-See: https://tanstack.com/query/v4/docs/react/guides/query-invalidation
+See: https://tanstack.com/query/v5/docs/react/guides/query-invalidation
 
 ### A Bit More Explanation on How State is Updated in the UI
 
