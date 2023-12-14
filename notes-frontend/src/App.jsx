@@ -26,7 +26,7 @@ const App = () => {
   const updateNoteMutation = useMutation({
     mutationFn: updateNote,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['notes'] })
+      queryClient.invalidateQueries({ queryKey: ['notes'] }) // <== updates UI, good magic
     },
   })
 
