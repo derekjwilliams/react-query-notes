@@ -1,8 +1,19 @@
-# React + Vite
+## Example queries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Users with Audiences
 
-Currently, two official plugins are available:
+```
+http://localhost:3000/users?select=display_name,family_name,email,employee_id,given_name,audiences(display_name,active,visible)
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Users with Sites
+
+http://localhost:3000/users?select=display_name,family_name,sites(display_name)
+
+### Users with Classifications
+
+http://localhost:3000/users?select=display_name,family_name,classifications(display_name,short_name,active)
+
+### Classifications with resource_links
+
+http://localhost:3000/classifications?select=display_name,short_name,active,resource_links(type,destination_url)
