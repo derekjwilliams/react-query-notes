@@ -1,34 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { getUsers, updateUser } from './requests'
 
-function App() {
-  const [count, setCount] = useState(0)
+import UserForm from './components/UserForm'
+import Notification from './components/Notification'
+import { useNotificationDispatch } from './NotificationContext'
+
+const App = () => {
+  const notificationDispatch = useNotificationDispatch()
+  const queryClient = useQueryClient()
+
+  const updateUserMutation = useMutation({
+    mutationFn: updateUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] })
+    },
+  })
+
+  const result = useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+    retry: false,
+  })
+
+  if (result.isLoading) {
+    return <div>loading data...</div>
+  }
+
+  if (result.isError) {
+    return <div>User service not available due to problems in server</div>
+  }
+
+  const Users = result.data
+
+  const handleVote = (User) => {
+    updateUserMutation.mutate({ ...User, votes: User.votes + 1 })
+    notificationDispatch({
+      type: 'SHOW',
+      message: `Upvoted: ${User.display_name}`,
+    })
+    setTimeout(() => {
+      notificationDispatch({ type: 'HIDE' })
+    }, 5000)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h3>User app</h3>
+
+      <Notification />
+      <UserForm />
+
+      {Users &&
+        Users.map((user) => (
+          <div key={user.id}>
+            <div>{user.display_name}</div>
+            <div>
+              has {user.votes}
+              <button onClick={() => handleVote(user)}>vote</button>
+            </div>
+          </div>
+        ))}
+    </div>
   )
 }
 
