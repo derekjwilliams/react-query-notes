@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/users' //json-server url
-// const baseUrl = 'http://localhost:3000/users' // postgrest url
+// const baseUrl = 'http://localhost:3001/users' //json-server url
+const baseUrl = 'http://localhost:3000/users' // postgrest url
 
 export const getUsers = () => {
   console.log('requests/getUsers')

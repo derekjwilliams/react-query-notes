@@ -1,39 +1,52 @@
 {
   "users": [
     {
-      "display_name": "If it hurts, do it more often",
-      "votes": 24,
-      "id": "47145"
+      "id": 2,
+      "display_name": "Colin Sheridan",
+      "given_name": "Goose",
+      "family_name": "Bacon",
+      "email": "csheridan@willamette.edu",
+      "employee_id": "2357382"
     },
     {
-      "display_name": "Adding manpower to a late software project makes it later!",
-      "id": "21149",
-      "votes": 0
+      "id": 3,
+      "display_name": "Jason C Redcedar",
+      "given_name": "Maverick",
+      "family_name": "Churro",
+      "email": "jredcedar@willamette.edu",
+      "employee_id": "2357383"
     },
     {
-      "display_name": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
-      "id": "69581",
-      "votes": 1
+      "id": 4,
+      "display_name": "Chris Kim",
+      "given_name": "Iceman",
+      "family_name": "Candy",
+      "email": "ckim3@willamette.edu",
+      "employee_id": "2362317"
     },
     {
-      "display_name": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-      "id": "36975",
-      "votes": 1
+      "id": 5,
+      "display_name": "Timothy Gilman",
+      "given_name": "Viper",
+      "family_name": "Donut",
+      "email": "tgilman@willamette.edu",
+      "employee_id": "1697323"
     },
     {
-      "display_name": "Premature optimization is the root of all evil.",
-      "id": "25170",
-      "votes": 3
+      "id": 6,
+      "display_name": "Laura Levin",
+      "given_name": "Sundown",
+      "family_name": "Pizza",
+      "email": "llevin@willamette.edu",
+      "employee_id": "1448200"
     },
     {
-      "display_name": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
-      "votes": 12,
-      "id": "98312"
-    },
-    {
-      "display_name": "Test user",
-      "votes": 1,
-      "id": "UKpRdZu"
+        "id": 1,
+        "display_name": "Derek Williams",
+        "given_name": "Derek",
+        "family_name": "Williams",
+        "email": "derek61@gmail.com",
+        "employee_id": "9999999"
     }
-  ]
+   ]
 }
