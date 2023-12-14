@@ -24,9 +24,9 @@ const UserForm = () => {
 
   const onCreate = (event) => {
     event.preventDefault()
-    const userDisplayName = event.target.user.value
-    event.target.user.value = ''
-    mutation.mutate({ display_name: userDisplayName, votes: 0 })
+    const userDisplayName = event.target.display_name.value
+    event.target.display_name.value = ''
+    mutation.mutate({ display_name: userDisplayName })
 
     notificationDispatch({
       type: 'SHOW',
@@ -39,9 +39,9 @@ const UserForm = () => {
 
   return (
     <div>
-      <h3>create new</h3>
+      <h3>Create New User</h3>
       <form onSubmit={onCreate}>
-        <input name='user' />
+        <input name='display_name' />
         <button type='submit'>create</button>
       </form>
     </div>

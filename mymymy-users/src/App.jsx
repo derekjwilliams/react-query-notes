@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getUsers, updateUser } from './requests'
 
 import UserForm from './components/UserForm'
+import User from './components/User'
 import Notification from './components/Notification'
 import { useNotificationDispatch } from './NotificationContext'
 
@@ -52,13 +53,15 @@ const App = () => {
 
       {Users &&
         Users.map((user) => (
-          <div key={user.id}>
-            <div>{user.display_name}</div>
-            <div>
-              has {user.votes}
-              <button onClick={() => handleVote(user)}>vote</button>
-            </div>
-          </div>
+          <User key={user.id} user={user}></User>
+          // <div key={user.id}>
+          //   <User key={user.id} user={user}></User>
+          //   <div>{user.display_name}</div>
+          //   <div>
+          //     has {user.votes}
+          //     <button onClick={() => handleVote(user)}>vote</button>
+          //   </div>
+          // </div>
         ))}
     </div>
   )
