@@ -4,10 +4,10 @@
   flex-direction: column;
   gap: var(--size-2);
   background: var(--surface-2);
-  border: 1px solid var(--surface-5);
+  border: 2px solid var(--gray-3);
   padding: var(--size-4);
   border-radius: var(--radius-3);
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--shadow-3);
   /* width: 30rem; */
 }
 /* .container {
