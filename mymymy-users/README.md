@@ -1,4 +1,4 @@
-# Postgrest 
+# Postgrest
 
 ## Example queries
 
@@ -23,7 +23,6 @@ http://localhost:3000/classifications?select=display_name,short_name,active,reso
 # mymymy Components from Pages/index.jsx
 
 ```JavaScript
-
 import Link from '@/Components/Link';
 import LinkPopup from '@/Components/LinkPopup';
 import PopularLinks from '@/Components/PopularLinks';
@@ -61,7 +60,7 @@ return Inertia::render('Index', [
 
 getFavoriteItems in app/Traits/Favoriter.php
 
-```php
+````php
 return app($model)->whereHas(
     'favoriters',
     fn ($q) => $q->where('user_id', $this->getKey())
@@ -75,8 +74,9 @@ return app($model)->whereHas(
     apiUrl="https://events.willamette.edu/api/v1/mywu_events"
     eventType="today"
 />
-```
-```
+````
+
+````
 ```JavaScript
 axios
     .get(apiUrl)
@@ -87,7 +87,7 @@ axios
     .catch((error) => {
         console.log(error);
     });
-```
+````
 
 Note: the url returns populated data
 
@@ -110,7 +110,6 @@ axios
 
 Note: the url returns populated data
 
-
 ### DashboardTodaySavethedate, Save the date
 
 ```JavaScript
@@ -118,6 +117,7 @@ Note: the url returns populated data
 ```
 
 Note: fetchPostings is a bit confusing below
+
 ```JavaScript
 const fetchPostings = async () => {
     axios
@@ -132,7 +132,6 @@ const fetchPostings = async () => {
 ```
 
 Note: the url returns empty data
-
 
 ### DashboardTodayNewEmployees, New Employees
 
@@ -174,7 +173,6 @@ Note: the url returns empty data
         });
 ```
 
-
 Note: the url returns live data
 
 ### PopularLinks
@@ -188,4 +186,3 @@ axios
         },
     })
 ```
-

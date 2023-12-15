@@ -35,11 +35,11 @@ const App = () => {
 
   const users = result.data
 
-  const handleVote = (User) => {
-    updateUserMutation.mutate({ ...User, votes: User.votes + 1 })
+  const handleVote = (user) => {
+    updateUserMutation.mutate({ ...user, votes: user.votes + 1 })
     notificationDispatch({
       type: 'SHOW',
-      message: `Upvoted: ${User.display_name}`,
+      message: `Upvoted: ${user.display_name}`,
     })
     setTimeout(() => {
       notificationDispatch({ type: 'HIDE' })
@@ -51,7 +51,7 @@ const App = () => {
       <h3>User app</h3>
       <Notification />
       <UserForm />
-      <UserGroup users={users}/>
+      <UserGroup users={users} />
     </div>
   )
 }
