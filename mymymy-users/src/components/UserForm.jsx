@@ -1,24 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createUser } from '../requests'
-import { useNotificationDispatch } from '../NotificationContext'
+import toast, { Toaster } from 'react-hot-toast'
 
 const UserForm = () => {
-  const notificationDispatch = useNotificationDispatch()
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
     mutationFn: createUser,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      toast(`User: "${data.display_name}" Created`)
       queryClient.invalidateQueries({ queryKey: ['users'] }) // magic here :)
     },
     onError: (e) => {
-      notificationDispatch({
-        type: 'SHOW',
-        message: `Error creating user: ${e.response.data.error}`,
-      })
-      setTimeout(() => {
-        notificationDispatch({ type: 'HIDE' })
-      }, 5000)
+      toast(`User was not created: ${e.response.data.error}`)
     },
   })
 
@@ -27,18 +21,11 @@ const UserForm = () => {
     const userDisplayName = event.target.display_name.value
     event.target.display_name.value = ''
     mutation.mutate({ display_name: userDisplayName })
-
-    notificationDispatch({
-      type: 'SHOW',
-      message: `Create New User: ${userDisplayName}`,
-    })
-    setTimeout(() => {
-      notificationDispatch({ type: 'HIDE' })
-    }, 5000)
   }
 
   return (
     <div>
+      <Toaster />
       <h5>Create New User</h5>
       <form onSubmit={onCreate}>
         <input name='display_name' />

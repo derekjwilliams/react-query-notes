@@ -10,6 +10,7 @@ import './App.css'
 
 const App = () => {
   const notificationDispatch = useNotificationDispatch()
+
   const queryClient = useQueryClient()
 
   const updateUserMutation = useMutation({
@@ -35,16 +36,7 @@ const App = () => {
 
   const users = result.data
 
-  const handleVote = (user) => {
-    updateUserMutation.mutate({ ...user, votes: user.votes + 1 })
-    notificationDispatch({
-      type: 'SHOW',
-      message: `Upvoted: ${user.display_name}`,
-    })
-    setTimeout(() => {
-      notificationDispatch({ type: 'HIDE' })
-    }, 5000)
-  }
+
 
   return (
     <div>
