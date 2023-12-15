@@ -1,6 +1,26 @@
-# Postgrest
+# Running
 
-## Example queries
+This is a super simple application. Both the mock server and client need to be run
+
+## Mock Server
+
+The json-server package is used to mock a server:
+
+```npm run server```
+
+The server runs on port 3001, so to see users, use http://localhost:3001/users
+
+## Postgrest Server
+
+Modify `requests.js` to point to a local Postgrest instance
+
+## Client
+
+```npm run dev```
+
+The client runs on port 5173, navigate to http://localhost:5173 to see the super simple client
+
+## Example queries against a Postgrest Server
 
 ### Users with Audiences
 

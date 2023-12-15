@@ -8,9 +8,14 @@
   max-inline-size: calc(var(--size-content-4) * 4);
 }
 
-@media (width > 900px) {
+@media (width > 200px) {
   .cards {
     --column-count: 2;
+  }
+}
+@media (width > 900px) {
+  .cards {
+    --column-count: 4;
   }
 }
 
