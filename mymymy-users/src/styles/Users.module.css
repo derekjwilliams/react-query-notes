@@ -1,0 +1,18 @@
+
+.cards {
+  --column-count: 4;
+  display: grid;
+  gap: var(--size-5);
+  grid-template-columns: repeat(var(--column-count), 1fr);
+  justify-content: space-around;
+  padding: var(--size-5);
+  max-inline-size: calc(var(--size-content-4) * 4);
+}
+
+@media (width > 900px) {
+  .cards { --column-count: 2}
+}
+
+@media (width > 1500px) {
+  .cards { --column-count: 5}
+}

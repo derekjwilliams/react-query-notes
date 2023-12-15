@@ -1,10 +1,12 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getUsers, updateUser } from './requests'
-
 import UserForm from './components/UserForm'
-import User from './components/User'
+import UserGroup from './components/UserGroup'
 import Notification from './components/Notification'
 import { useNotificationDispatch } from './NotificationContext'
+
+import './styles/globals.css'
+import './App.css'
 
 const App = () => {
   const notificationDispatch = useNotificationDispatch()
@@ -31,7 +33,7 @@ const App = () => {
     return <div>User service not available due to problems in server</div>
   }
 
-  const Users = result.data
+  const users = result.data
 
   const handleVote = (User) => {
     updateUserMutation.mutate({ ...User, votes: User.votes + 1 })
@@ -47,22 +49,9 @@ const App = () => {
   return (
     <div>
       <h3>User app</h3>
-
       <Notification />
       <UserForm />
-
-      {Users &&
-        Users.map((user) => (
-          <User key={user.id} user={user}></User>
-          // <div key={user.id}>
-          //   <User key={user.id} user={user}></User>
-          //   <div>{user.display_name}</div>
-          //   <div>
-          //     has {user.votes}
-          //     <button onClick={() => handleVote(user)}>vote</button>
-          //   </div>
-          // </div>
-        ))}
+      <UserGroup users={users}/>
     </div>
   )
 }

@@ -39,7 +39,7 @@ const UserForm = () => {
 
   return (
     <div>
-      <h3>Create New User</h3>
+      <h5>Create New User</h5>
       <form onSubmit={onCreate}>
         <input name='display_name' />
         <button type='submit'>create</button>
