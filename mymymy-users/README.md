@@ -60,11 +60,12 @@ return Inertia::render('Index', [
 
 getFavoriteItems in app/Traits/Favoriter.php
 
-````php
+```php
 return app($model)->whereHas(
     'favoriters',
     fn ($q) => $q->where('user_id', $this->getKey())
-);```
+);
+```
 
 ### DashboardEvents
 
@@ -74,9 +75,8 @@ return app($model)->whereHas(
     apiUrl="https://events.willamette.edu/api/v1/mywu_events"
     eventType="today"
 />
-````
+```
 
-````
 ```JavaScript
 axios
     .get(apiUrl)
@@ -87,7 +87,7 @@ axios
     .catch((error) => {
         console.log(error);
     });
-````
+```
 
 Note: the url returns populated data
 
