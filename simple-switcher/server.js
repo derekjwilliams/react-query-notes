@@ -16,7 +16,7 @@ const validator = (request, response, next) => {
   }
 }
 server.use(function(req, res, next){
-  setTimeout(next, 2000);
+  setTimeout(next, 500);
 });
 server.use(middlewares)
 server.use(jsonServer.bodyParser)

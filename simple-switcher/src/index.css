@@ -53,7 +53,12 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+input[type=checkbox][disabled]{
+  cursor:default;
+}
+input[type=checkbox]:not([disabled]) +label {
+  cursor:pointer;
+}
 
 label {
   display: inline;

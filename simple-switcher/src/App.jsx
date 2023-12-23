@@ -35,9 +35,6 @@ export default function App() {
    * @param {*} note
    */
   const toggleTheme = (event, user) => {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log('here')
     mutate({ ...user, theme: user.theme === 'dark' ? 'light' : 'dark' })
     console.log('toggle importance of', user.id)
     const doc = document.firstElementChild
