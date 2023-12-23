@@ -34,7 +34,10 @@ export default function App() {
    * Change the theme property of the user
    * @param {*} note
    */
-  const toggleTheme = (user) => {
+  const toggleTheme = (event, user) => {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log('here')
     mutate({ ...user, theme: user.theme === 'dark' ? 'light' : 'dark' })
     console.log('toggle importance of', user.id)
     const doc = document.firstElementChild
@@ -64,7 +67,7 @@ export default function App() {
         <div>
           <input
             type='checkbox'
-            onClick={() => toggleTheme(users[0])}
+            onChange={(e) => toggleTheme(e, users[0])}
             disabled={isPending}
             name='change-theme'
             className='change-theme'
