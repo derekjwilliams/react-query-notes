@@ -31,7 +31,7 @@ export default function App() {
   })
 
   /**
-   * Change the them property of the user
+   * Change the theme property of the user
    * @param {*} note
    */
   const toggleTheme = (user) => {
