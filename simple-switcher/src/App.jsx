@@ -13,20 +13,26 @@ export default function App() {
   const { mutate, isPending, variables } = useMutation({
     mutationFn: updateUser,
     onMutate: (variables) => {
+      document.firstElementChild.setAttribute('color-scheme', variables.theme)
+      /* For MyMyMy Laravel application, the following (or similar) will change the appearance:
       if (variables.theme === 'dark') {
-        const doc = document.firstElementChild
-        doc.setAttribute('color-scheme', 'dark')
-        //document.body.classList.remove('light'); //<-- for MyMyMy Laravel app
-        //document.body.classList.add('dark');
+        document.body.classList.remove('light');
+        document.body.classList.add('dark');
       } else {
-        const doc = document.firstElementChild
-        doc.setAttribute('color-scheme', 'light')
-        //document.body.classList.remove('dark'); //<-- for MyMyMy Laravel app
-        //document.body.classList.add('light');
-      }
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+      }*/
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] })
+    //Note: if response includes a user object then use it instead of invalidateQueries (which performs a refetch)
+    // See https://tanstack.com/query/latest/docs/react/guides/updates-from-mutation-responses
+    onSuccess: (data) => {
+      const queryData = queryClient.getQueryData(['users'])
+      try {
+        queryData[0].theme = data.theme
+        queryClient.setQueryData(['users']), queryData
+      } catch {
+        queryClient.invalidateQueries({ queryKey: ['users'] }) // force refetch of data and updates UI
+      }
     },
   })
 
