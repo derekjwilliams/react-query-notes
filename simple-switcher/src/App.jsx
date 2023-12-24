@@ -26,8 +26,8 @@ export default function App() {
     //Note: if response includes a user object then use it instead of invalidateQueries (which performs a refetch)
     // See https://tanstack.com/query/latest/docs/react/guides/updates-from-mutation-responses
     onSuccess: (data) => {
-      const queryData = queryClient.getQueryData(['users'])
       try {
+        const queryData = queryClient.getQueryData(['users'])
         queryData[0].theme = data.theme
         queryClient.setQueryData(['users']), queryData
       } catch {
